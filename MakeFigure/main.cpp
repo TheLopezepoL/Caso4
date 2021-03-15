@@ -3,7 +3,6 @@
 
 
 int main() {
-    Pattern* pattern = new Pattern(11, 25);
-    cout << pattern->getBiggerPattern() << endl;
+    cout << max(4, 2) << endl;
     return 0;
 }
