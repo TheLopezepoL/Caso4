@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+H:/Programming/C++/Code/Caso4/MakeFigure/Pattern.h
+vector
+-
+
+H:/Programming/C++/Code/Caso4/MakeFigure/main.cpp
+iostream
+-
+Pattern.h
+H:/Programming/C++/Code/Caso4/MakeFigure/Pattern.h
+
