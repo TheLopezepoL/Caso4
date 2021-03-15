@@ -24,7 +24,7 @@ public:
     double** getPattern();  // Devuelve un array 2D con los valores de tamanho de los circulos
     double getSizeBall(int pCurrentLarge, int pCurrentHigh) const;   // Devuelve el valor que deberia tener la pelota, recibe la posicion de la pelota.
     int getBiggerPattern(); // Devuelve el tamanho del octagono mas grande que puede hacer
-    static bool isRegular(int pSize); // Devuelve si el cuadrado puede tener un octagono regular
+    static bool isWholeNumber(int pSize); // Devuelve si el cuadrado puede tener un octagono regular
     int getDistance(int pPos) const;
 
 };

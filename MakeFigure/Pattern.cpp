@@ -32,13 +32,9 @@ int Pattern::getHigh() const {
 }
 
 int Pattern::getBiggerPattern() {
-    int smaller;
-    if (large > high)
-        smaller = high;
-    else
-        smaller = large;
+    int smaller = min(large, high);
     if (smaller > 0) {
-        while (!isRegular(smaller))
+        while (!isWholeNumber(smaller))
             smaller--;
         this->minSizeBall = maxBallSize / round((double) smaller / 2);
         return smaller;
@@ -48,7 +44,7 @@ int Pattern::getBiggerPattern() {
     }
 }
 
-bool Pattern::isRegular(int pSize) {
+bool Pattern::isWholeNumber(int pSize) {
     double x = ((double) pSize + 2) / 3;
     return (floor(x) == x);
 }
@@ -59,7 +55,7 @@ double Pattern::getSizeBall(int pCurrentLarge, int pCurrentHigh) const {
 }
 
 int Pattern::getDistance(int pPos) const {
-    long center = lround((double)currentSize / 2);
+    long center = lround((double) currentSize / 2);
     if (pPos > center)
         return (pPos - center) + 2;
     else
