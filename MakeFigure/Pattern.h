@@ -27,7 +27,6 @@ public:
     int getBiggerPattern(); // Devuelve el tamanho del octagono mas grande que puede hacer
     static bool isWholeNumber(int pSize); // Devuelve si el cuadrado puede tener un octagono regular
     double getDistance(int pPos) const;
-    bool haveBall(int pCurrentHigh, int pCurrentLarge, int pSideSize, int pWhiteSpaces, double pMiddle);
 
 };
 

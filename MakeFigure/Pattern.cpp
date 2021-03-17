@@ -4,7 +4,7 @@
 
 #include "Pattern.h"
 
-double maxBallSize = 10;
+double MAXBALLSIZE = 10;
 
 Pattern::Pattern() {
     this->high = 0;
@@ -38,10 +38,10 @@ int Pattern::getBiggerPattern() {
     if (smaller > 0) {
         while (!isWholeNumber(smaller))
             smaller--;
-        this->minSizeBall = maxBallSize / round((double) smaller / 2);
+        this->minSizeBall = MAXBALLSIZE / round((double) smaller / 2);
         return smaller;
     } else {
-        this->minSizeBall = maxBallSize;
+        this->minSizeBall = MAXBALLSIZE;
         return 0;
     }
 }
@@ -52,9 +52,8 @@ bool Pattern::isWholeNumber(int pSize) {
 }
 
 double Pattern::getSizeBall(int pCurrentHigh, int pCurrentLarge) const {
-    double maxDistance = max(getDistance(pCurrentHigh), getDistance(pCurrentLarge));
-    //6cout << getDistance(pCurrentHigh) << "\t" << getDistance(pCurrentLarge) << endl;
-    return (maxBallSize - (minSizeBall * maxDistance));
+    double distance = getDistance(pCurrentHigh) + getDistance(pCurrentLarge) - 1;
+    return (MAXBALLSIZE - (minSizeBall * distance));
 }
 
 double Pattern::getDistance(int pPos) const {
@@ -72,10 +71,7 @@ double** Pattern::getPattern() {
         array[h] = new double[large];
         for (int l = 0; l < large; l++) {
             if (h <= currentSize || l <= currentSize) {
-                if (haveBall(h, l, sideSize, whiteSpaces, middle))
-                    array[h][l] = getSizeBall(h, l);
-                else
-                    array[h][l] = -1.0;
+                array[h][l] = getSizeBall(h, l);
             } else
                 array[h][l] = -1.0;
         }
@@ -83,18 +79,3 @@ double** Pattern::getPattern() {
     return array;
 }
 
-bool Pattern::haveBall(int pCurrentHigh, int pCurrentLarge, int pSideSize, int pWhiteSpaces, double pMiddle) {
-    double startLine = (currentSize / 2) - (pSideSize / 2);
-    double endLine = (currentSize / 2) + (pSideSize / 2) - 1;
-    if ((startLine <= pCurrentLarge && pCurrentLarge <= endLine) ||
-        (startLine <= pCurrentHigh && pCurrentHigh <= endLine))
-        return true;
-    else if (pCurrentHigh < pMiddle && pCurrentLarge < pMiddle)
-        return ((pCurrentLarge + pCurrentHigh) >= pWhiteSpaces);
-    else if (pCurrentHigh < pMiddle && pCurrentLarge > pMiddle)
-        return (((pCurrentLarge - pCurrentHigh) - pWhiteSpaces) <= pWhiteSpaces);
-    else if (pCurrentHigh > pMiddle && pCurrentLarge < pMiddle)
-        return (abs(pWhiteSpaces - (pCurrentHigh - pCurrentLarge)) <= pWhiteSpaces);
-    else
-        return (abs(currentSize + (-pCurrentHigh - pCurrentLarge) + (pWhiteSpaces - 1)) <= pWhiteSpaces);
-}

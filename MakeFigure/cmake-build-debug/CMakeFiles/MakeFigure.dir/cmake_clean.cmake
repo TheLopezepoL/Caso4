@@ -3,8 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/MakeFigure.dir/main.cpp.obj"
   "MakeFigure.exe"
   "MakeFigure.exe.manifest"
-  "MakeFigure.lib"
   "MakeFigure.pdb"
+  "libMakeFigure.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

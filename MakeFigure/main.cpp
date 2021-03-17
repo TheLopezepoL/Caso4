@@ -3,7 +3,7 @@
 
 
 int main() {
-    Pattern *pattern = new Pattern(10, 10);
+    Pattern *pattern = new Pattern(7, 7);
     double **array = pattern->getPattern();
     for (int h = 0; h < pattern->getHigh(); h++){
         for (int l = 0; l < pattern->getLarge(); l++)

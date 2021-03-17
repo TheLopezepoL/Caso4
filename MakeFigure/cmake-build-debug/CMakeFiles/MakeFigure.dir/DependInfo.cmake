@@ -7,7 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "H:/Programming/C++/Code/Caso4/MakeFigure/Pattern.cpp" "H:/Programming/C++/Code/Caso4/MakeFigure/cmake-build-debug/CMakeFiles/MakeFigure.dir/Pattern.cpp.obj"
   "H:/Programming/C++/Code/Caso4/MakeFigure/main.cpp" "H:/Programming/C++/Code/Caso4/MakeFigure/cmake-build-debug/CMakeFiles/MakeFigure.dir/main.cpp.obj"
   )
-set(CMAKE_CXX_COMPILER_ID "MSVC")
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
