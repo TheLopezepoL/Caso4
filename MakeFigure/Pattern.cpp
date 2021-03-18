@@ -16,6 +16,7 @@ Pattern::Pattern() {
 Pattern::Pattern(int large, int high) {
     this->large = large;
     this->high = high;
+    //MAXBALLSIZE = large/2;
     this->currentSize = getBiggerPattern();
 }
 
@@ -77,5 +78,36 @@ double** Pattern::getPattern() {
         }
     }
     return array;
+}
+
+void Pattern::generatorJson(Pattern *pPattern){
+	double **array = pPattern->getPattern();
+	ofstream file;
+  	file.open("data.json");
+  	file << "{\n";
+  	file << "\t\"High\": " << high << ",\n";
+  	file << "\t\"Large\": " << large << ",\n";
+  	file << "\t\"points\": [ \n" ;
+  	
+  	for (int h = 0; h < pPattern->getHigh(); h++){
+        for (int l = 0; l < pPattern->getLarge(); l++){
+        	
+        	file << "[ " << h << "," << l << "," << array[h][l] << "] " ;
+        	
+        	if(l != pPattern->getLarge() - 1 or h != pPattern->getHigh()-1 ){
+        	
+        	file << ", \n";
+        	
+			}
+        	
+		}
+        	
+           
+    }
+  	file << "] \n" ;
+  	file << "}";
+  	file.close();
+  	
+  	cout << "Archivo JSON listo." << endl;
 }
 

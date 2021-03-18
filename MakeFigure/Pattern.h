@@ -5,6 +5,9 @@
 #include <iostream>
 #include <cstdio>
 #include <cmath>
+#include <stdlib.h>
+#include <fstream>
+#include <sstream>
 using namespace std;
 
 class Pattern{
@@ -27,7 +30,7 @@ public:
     int getBiggerPattern(); // Devuelve el tamanho del octagono mas grande que puede hacer
     static bool isWholeNumber(int pSize); // Devuelve si el cuadrado puede tener un octagono regular
     double getDistance(int pPos) const;
-
+	void generatorJson(Pattern *pPattern); //Genera un json para leerlo en javascript
 };
 
 
