@@ -6,16 +6,18 @@
 
 #IncludeRegexTransform: 
 
-H:/Programming/C++/Code/Caso4/MakeFigure/Pattern.cpp
-Pattern.h
-H:/Programming/C++/Code/Caso4/MakeFigure/Pattern.h
-
 H:/Programming/C++/Code/Caso4/MakeFigure/Pattern.h
 iostream
 -
 cstdio
 -
 cmath
+-
+stdlib.h
+-
+fstream
+-
+sstream
 -
 
 H:/Programming/C++/Code/Caso4/MakeFigure/main.cpp

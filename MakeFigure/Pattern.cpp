@@ -39,7 +39,7 @@ int Pattern::getBiggerPattern() {
     if (smaller > 0) {
         while (!isWholeNumber(smaller))
             smaller--;
-        this->minSizeBall = MAXBALLSIZE / round((double) smaller / 2);
+        this->minSizeBall = MAXBALLSIZE / (round((double) smaller / 2));
         return smaller;
     } else {
         this->minSizeBall = MAXBALLSIZE;
@@ -53,7 +53,7 @@ bool Pattern::isWholeNumber(int pSize) {
 }
 
 double Pattern::getSizeBall(int pCurrentHigh, int pCurrentLarge) const {
-    double distance = getDistance(pCurrentHigh) + getDistance(pCurrentLarge) - 1;
+    double distance = getDistance(pCurrentHigh) + getDistance(pCurrentLarge) - floor((currentSize - 1) / 6);
     return (MAXBALLSIZE - (minSizeBall * distance));
 }
 
@@ -62,10 +62,7 @@ double Pattern::getDistance(int pPos) const {
     return floor(abs(center - (double)pPos));
 }
 
-double** Pattern::getPattern() {
-    int sideSize = (currentSize + 2) / 3;
-    int whiteSpaces = (currentSize - sideSize) / 2;
-    double middle = (currentSize - 1) / 2;
+double** Pattern::getPattern() const {
     double **array;
     array = new double *[high];
     for (int h = 0; h < high; h++) {
@@ -93,16 +90,16 @@ void Pattern::generatorJson(Pattern *pPattern){
         for (int l = 0; l < pPattern->getLarge(); l++){
         	
         	file << "[ " << h << "," << l << "," << array[h][l] << "] " ;
-        	
+        	printf("[%d, %d, %f]\t", h, l, array[h][l]);
         	if(l != pPattern->getLarge() - 1 or h != pPattern->getHigh()-1 ){
-        	
-        	file << ", \n";
-        	
+
+        	    file << ", \n";
+
 			}
-        	
+
 		}
-        	
-           
+
+
     }
   	file << "] \n" ;
   	file << "}";
