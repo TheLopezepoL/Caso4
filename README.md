@@ -3,4 +3,5 @@ La idea principal del algoritmo es generar un punto en el centro de los pixeles 
 
 ### F(n) y O()
 F(n) = n + n debido a que hay for pero los tamaños son variables
+##
 O(n) = n  debido a que recorre el arreglo.
