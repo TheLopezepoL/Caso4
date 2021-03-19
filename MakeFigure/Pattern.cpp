@@ -64,18 +64,21 @@ double Pattern::getDistance(int pPos) const {
 
 double** Pattern::getPattern() const {
     double **array;
-    array = new double *[high];
-    for (int h = 0; h < high; h++) {
-        array[h] = new double[large];
-        for (int l = 0; l < large; l++) {
-            if (h <= currentSize || l <= currentSize) {
-                array[h][l] = getSizeBall(h, l);
+    array = new double *[high]; // --> 2
+    // --> 1
+    for (int h = 0; h < high; h++) { // --> 3  --> 4 --> 17(n+n)
+        array[h] = new double[large]; // --> 1
+        for (int l = 0; l < large; l++) { // --> 4 --> 13
+            if (h <= currentSize || l <= currentSize) { // --> 5 --> 9
+                array[h][l] = getSizeBall(h, l); // -->4
             } else
                 array[h][l] = -1.0;
         }
     }
-    return array;
+    return array; //--> 1
 }
+//f(n) = 17(2n) + 3
+//f(n) = 34n + 3 
 
 void Pattern::generatorJson(Pattern *pPattern){
 	double **array = pPattern->getPattern();
@@ -90,7 +93,7 @@ void Pattern::generatorJson(Pattern *pPattern){
         for (int l = 0; l < pPattern->getLarge(); l++){
         	
         	file << "[ " << h << "," << l << "," << array[h][l] << "] " ;
-        	printf("[%d, %d, %f]\t", h, l, array[h][l]);
+        	//printf("[%d, %d, %f]\t", h, l, array[h][l]);
         	if(l != pPattern->getLarge() - 1 or h != pPattern->getHigh()-1 ){
 
         	    file << ", \n";
